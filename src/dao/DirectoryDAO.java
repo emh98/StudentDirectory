@@ -16,10 +16,98 @@
  */
 package dao;
 
+import exception.EmailException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import model.Directory;
+
 /**
  *
  * @author Emanuel Mateus
  */
 public class DirectoryDAO {
     
+    private ArrayList<Directory> list;
+    
+    public DirectoryDAO(ArrayList<Directory> list) {
+        
+        this.list = list;
+    
+    }
+
+    public boolean ingresar(Directory student) {
+            if (this.search(student.getInstitutionalMail()) == null) {
+                    this.list.add(student);
+                    return true;
+            } else {
+                    return false;
+            }
+    }
+
+    public Directory buscar(Directory student) {
+
+        Directory response = null;
+        if(!this.list.isEmpty()){
+            //for elemento in lista:
+            for (Directory search : this.list) {
+                if(student.getInstitutionalMail()
+                        .equals(search.getInstitutionalMail())){
+                    response = search;
+                }
+            }
+        }
+        return response;
+
+    }
+    
+    public Directory search(String instututionalMail) {
+
+        Directory response = null;
+        if(!this.list.isEmpty()){
+            //for elemento in lista:
+            for (Directory search : this.list) {
+                if(instututionalMail.equals(search.getInstitutionalMail())){
+                    response = search;
+                }
+            }
+        }
+        return response;
+
+    }
+
+    public Directory modify(Directory student) throws ParseException, EmailException {
+            Iterator<Directory> it2 = this.list.iterator();
+            while (it2.hasNext()) {
+                    Directory al = it2.next();
+                    if (al.getInstitutionalMail().equals(student.getInstitutionalMail())) {
+                        al.setName(student.getName());
+                        al.setLastName(student.getLastName());
+                        al.setBirthday(student.getBirthday().toString());
+                        al.setPersonalMail(student.getPersonalMail());
+                        al.setInstitutionalMail(student.getInstitutionalMail());
+                        break;
+                    }
+            }
+            return null;
+    }
+
+    public boolean remove(String instututionalMail) {
+            Directory deleted = this.search(instututionalMail);
+            if (deleted == null) {
+                    return false;
+            } else {
+                    this.list.remove(deleted);
+                    return true;
+            }
+    }
+
+    public String viewList() {
+            String list = "";
+            for (Directory student : this.list) {
+                    list = list.concat(student.toString() + "\n");
+            }
+            return list;
+    }
 }

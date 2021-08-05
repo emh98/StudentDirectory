@@ -14,38 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dto;
-
-import dao.DirectoryDAO;
-import java.util.ArrayList;
-import model.Directory;
+package exception;
 
 /**
  *
  * @author Emanuel Mateus
  */
-public class DirectoryDTO {
-    private ArrayList<Directory> list;
-    private DirectoryDAO dirDAO;
-
-    public DirectoryDTO() {
-        list = new ArrayList<Directory>();
-        dirDAO = new DirectoryDAO(list);	
+public class EmailException extends Exception{
+    
+    public EmailException(String mjs){
+        super(mjs);
     }
-
-      public ArrayList<Directory> getdatos() {
-            return list;
-        }
-
-        public void setdatos(ArrayList<Directory> datos) {
-            this.list = datos;
-        }
-
-        public DirectoryDAO getdire_DAO() {
-            return dirDAO;
-        }
-
-        public void setdire_DAO(DirectoryDAO dire_DAO) {
-            this.dirDAO = dire_DAO;
-        }
+    
 }

@@ -16,10 +16,13 @@
  */
 package model;
 
+import exception.EmailException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -69,16 +72,38 @@ public class Directory {
         return this.institutionalMail;
     }
 
-    public void setInstitutionalMail(String institutionalMail) {
-        this.institutionalMail = institutionalMail;
+    public void setInstitutionalMail(String institutionalMail) throws EmailException{
+        Pattern pattern = Pattern.compile(
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        );
+        
+        Matcher mather = pattern.matcher(institutionalMail);
+        
+        if (mather.find() == true) {
+            this.institutionalMail = institutionalMail;
+        }else{
+            throw new EmailException("Correo mal escrito");
+        }
     }
 
     public String getPersonalMail() {
         return this.personalMail;
     }
 
-    public void setPersonalMail(String personalMail) {
-        this.personalMail = personalMail;
+    public void setPersonalMail(String personalMail)throws EmailException{
+        Pattern pattern = Pattern.compile(
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        );
+        
+        Matcher mather = pattern.matcher(personalMail);
+        
+        if (mather.find() == true) {
+            this.personalMail = personalMail;
+        }else{
+            throw new EmailException("Correo mal escrito");
+        }
     }
 
     public long getCellPhone() {
