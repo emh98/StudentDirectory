@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/view/ConsolView.java</file>
+            <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/controller/Controller.java</file>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/dto/DirectoryDTO.java</file>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/model/Directory.java</file>
-            <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/exception/EmailException.java</file>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/dao/DirectoryDAO.java</file>
         </group>
     </open-files>

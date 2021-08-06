@@ -30,10 +30,16 @@ public class DirectoryDAO {
     
     private ArrayList<Directory> list;
     
-    public DirectoryDAO(ArrayList<Directory> list) {
-        
-        this.list = list;
+    public DirectoryDAO() {
     
+    }
+    
+    public ArrayList<Directory> getList(){
+        return this.list;
+    }
+    
+    public void setList(ArrayList<Directory> list){
+        this.list = list;
     }
 
     public boolean ingresar(Directory student) {
@@ -45,7 +51,7 @@ public class DirectoryDAO {
             }
     }
 
-    public Directory buscar(Directory student) {
+    public Directory search(Directory student) {
 
         Directory response = null;
         if(!this.list.isEmpty()){
@@ -61,13 +67,13 @@ public class DirectoryDAO {
 
     }
     
-    public Directory search(String instututionalMail) {
+    public Directory search(String institutionalMail) {
 
         Directory response = null;
         if(!this.list.isEmpty()){
             //for elemento in lista:
             for (Directory search : this.list) {
-                if(instututionalMail.equals(search.getInstitutionalMail())){
+                if(institutionalMail.equals(search.getInstitutionalMail())){
                     response = search;
                 }
             }
@@ -76,14 +82,14 @@ public class DirectoryDAO {
 
     }
 
-    public Directory modify(Directory student) throws ParseException, EmailException {
+    public Directory modify(Directory student){
             Iterator<Directory> it2 = this.list.iterator();
             while (it2.hasNext()) {
                     Directory al = it2.next();
                     if (al.getInstitutionalMail().equals(student.getInstitutionalMail())) {
                         al.setName(student.getName());
                         al.setLastName(student.getLastName());
-                        al.setBirthday(student.getBirthday().toString());
+                        al.setBirthday(student.getBirthday());
                         al.setPersonalMail(student.getPersonalMail());
                         al.setInstitutionalMail(student.getInstitutionalMail());
                         break;
@@ -92,8 +98,8 @@ public class DirectoryDAO {
             return null;
     }
 
-    public boolean remove(String instututionalMail) {
-            Directory deleted = this.search(instututionalMail);
+    public boolean remove(String institutionalMail) {
+            Directory deleted = this.search(institutionalMail);
             if (deleted == null) {
                     return false;
             } else {

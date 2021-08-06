@@ -21,6 +21,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,47 +65,25 @@ public class Directory {
         return birthday;
     }
     
-    public void setBirthday(String birthday) throws ParseException {
-        DateFormat format = new SimpleDateFormat("DD/MM/YYYY");
-        this.birthday = format.parse(birthday);
+    public void setBirthday(Date birthday){
+        
+        this.birthday = birthday;
     }
 
     public String getInstitutionalMail() {
         return this.institutionalMail;
     }
 
-    public void setInstitutionalMail(String institutionalMail) throws EmailException{
-        Pattern pattern = Pattern.compile(
-                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        );
-        
-        Matcher mather = pattern.matcher(institutionalMail);
-        
-        if (mather.find() == true) {
-            this.institutionalMail = institutionalMail;
-        }else{
-            throw new EmailException("Correo mal escrito");
-        }
+    public void setInstitutionalMail(String institutionalMail){
+        this.institutionalMail = institutionalMail;
     }
 
     public String getPersonalMail() {
         return this.personalMail;
     }
 
-    public void setPersonalMail(String personalMail)throws EmailException{
-        Pattern pattern = Pattern.compile(
-                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        );
-        
-        Matcher mather = pattern.matcher(personalMail);
-        
-        if (mather.find() == true) {
-            this.personalMail = personalMail;
-        }else{
-            throw new EmailException("Correo mal escrito");
-        }
+    public void setPersonalMail(String personalMail){
+        this.personalMail = personalMail;
     }
 
     public long getCellPhone() {
@@ -140,7 +120,7 @@ public class Directory {
                 + "Correo personal: " + personalMail + "\n" 
                 + "N�mero telef�nico celular: " + cellPhone + "\n" 
                 + "N�mero telef�nico fijo: " + landline + "\n" 
-                + "N�mero telef�nico fijo: " + academicProgram + "\n";
+                + "Programa academico: " + academicProgram + "\n";
 
     }
     

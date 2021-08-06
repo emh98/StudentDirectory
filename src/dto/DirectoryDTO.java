@@ -30,7 +30,7 @@ public class DirectoryDTO {
 
     public DirectoryDTO() {
         list = new ArrayList<Directory>();
-        dirDAO = new DirectoryDAO(list);	
+        dirDAO = new DirectoryDAO();	
     }
 
       public ArrayList<Directory> getdatos() {
