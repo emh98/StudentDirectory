@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/dto/DirectoryDTO.java</file>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/model/Directory.java</file>
+            <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/exception/EmailException.java</file>
             <file>file:/C:/Users/emate/Documents/NetBeansProjects/StudentDirectory/src/dao/DirectoryDAO.java</file>
         </group>
     </open-files>
